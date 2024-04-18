@@ -1,8 +1,6 @@
 from django.contrib import admin
 from .models import Author, Post, Tag, Comment
 
-# Register your models here.
-
 
 class AuthorAdmin(admin.ModelAdmin):
     list_display = ("full_name",)

@@ -5,40 +5,13 @@ from django.urls import reverse
 from django.views.generic import DetailView, ListView
 from django.views import View
 
-from .models import Post, Author, Tag, Comment
+from .models import Post
 from .forms import CommentForm
-
-from rest_framework import viewsets
-from .serializers import PostSerializer, AuthorSerializer, TagSerializer, CommentSerializer
-
-
-# rest framework views
-
-class PostsRestView(viewsets.ModelViewSet):
-    queryset = Post.objects.all()
-    serializer_class = PostSerializer
-
-class AuthorRestView(viewsets.ModelViewSet):
-    queryset = Author.objects.all()
-    serializer_class = AuthorSerializer
-
-
-class  TagsRestView(viewsets.ModelViewSet):
-    queryset = Tag.objects.all()
-    serializer_class = TagSerializer
-
-class CommentsRestView(viewsets.ModelViewSet):
-    queryset = Comment.objects.all()
-    serializer_class = CommentSerializer
-
-# django views
 
 def get_date(post):
     return post['date']
     # or return post.get('date')
 
-
-# Create your views here.
 
 class StartingPageView(ListView):
     template_name = "blog/index.html"
